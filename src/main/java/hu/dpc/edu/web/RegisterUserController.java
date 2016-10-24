@@ -32,7 +32,7 @@ public class RegisterUserController extends HttpServlet {
         final String last = req.getParameter("last");
 
 
-        final User user = new User(szin + " " + first, last);
+        final User user = new User(first, last);
 
         req.setAttribute("user", user);
 
@@ -41,7 +41,7 @@ public class RegisterUserController extends HttpServlet {
 //        servletContext.setAttribute();
 
 
-        final RequestDispatcher requestDispatcher = getServletContext().getNamedDispatcher("siker");
+        final RequestDispatcher requestDispatcher = req.getRequestDispatcher("/successfulRegistration.jsp");
 
         //final RequestDispatcher requestDispatcher = req.getRequestDispatcher("successfulRegistration");
 
