@@ -1,8 +1,14 @@
 package hu.dpc.edu.web;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Component;
+
 /**
  * Created by vrg on 21/10/16.
  */
+@Component
+@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class User {
     private String firstName;
     private String lastName;
