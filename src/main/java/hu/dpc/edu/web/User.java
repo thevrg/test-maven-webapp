@@ -1,5 +1,6 @@
 package hu.dpc.edu.web;
 
+import com.sun.xml.internal.txw2.annotation.XmlElement;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
+@XmlElement
 public class User implements Cloneable {
     private String firstName;
     private String lastName;
