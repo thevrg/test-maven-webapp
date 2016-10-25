@@ -21,7 +21,7 @@ public class SimpleRestController {
         this.model = model;
     }
 
-    @RequestMapping("/hello")
+    @RequestMapping(value = "/hello", method = {RequestMethod.GET, RequestMethod.PUT})
     public String hello() {
         return "Hello World!";
     }
