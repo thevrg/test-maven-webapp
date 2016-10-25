@@ -1,6 +1,7 @@
 package hu.dpc.edu.web;
 
-import com.sun.xml.internal.txw2.annotation.XmlElement;
+import com.fasterxml.jackson.annotation.JsonClassDescription;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
-@XmlElement
 public class User implements Cloneable {
     private String firstName;
     private String lastName;
@@ -24,6 +24,11 @@ public class User implements Cloneable {
         this.lastName = lastName;
     }
 
+    public User(String firstName, String lastName, Long id) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.id = id;
+    }
 
     public Long getId() {
         return id;
@@ -65,5 +70,26 @@ public class User implements Cloneable {
                 ", lastName='" + lastName + '\'' +
                 ", id=" + id +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
+        return id != null ? id.equals(user.id) : user.id == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = firstName != null ? firstName.hashCode() : 0;
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (id != null ? id.hashCode() : 0);
+        return result;
     }
 }

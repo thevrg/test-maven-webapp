@@ -37,7 +37,7 @@ public class DefaultMyModel implements MyModel {
         if (user != null) {
             return user.clone();
         } else {
-            return null;
+            throw new UserNotFoundException("User with the given id does not exist.", id);
         }
     }
 
@@ -48,7 +48,7 @@ public class DefaultMyModel implements MyModel {
         }
         final User managedUser = userMap.get(user.getId());
         if (managedUser == null) {
-            throw new IllegalArgumentException("User with the given id does not exist.");
+            throw new UserNotFoundException("User with the given id does not exist.", user.getId());
         }
         managedUser.setFirstName(user.getFirstName());
         managedUser.setLastName(user.getLastName());
