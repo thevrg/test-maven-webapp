@@ -83,7 +83,7 @@ public class UserControllerTest {
         User changedUser = new User("Ferenc", "Nagy");
         String changedUserJSON = new ObjectMapper().writeValueAsString(changedUser);
 
-        User userShouldBePassedToModel = new User("Ferenc", "Nagy2", 1234L);
+        User userShouldBePassedToModel = new User("Ferenc", "Nagy", 1234L);
 
 
         //When
